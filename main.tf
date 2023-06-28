@@ -73,7 +73,7 @@ resource "aws_db_instance" "db_instance" {
   instance_class        = var.instance_class
   allocated_storage     = local.is_replica ? null : var.allocated_storage
   max_allocated_storage = var.max_allocated_storage
-  storage_encrypted     = var.storage_encrypted
+  storage_encrypted     = true
   kms_key_id            = var.kms_key_arn
 
   vpc_security_group_ids = var.security_group_ids

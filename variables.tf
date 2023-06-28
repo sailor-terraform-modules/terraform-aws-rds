@@ -50,11 +50,6 @@ variable "storage_type" {
   description = "One of 'standard' (magnetic), 'gp2' (general purpose SSD), or 'io1' (provisioned IOPS SSD)"
 }
 
-variable "storage_encrypted" {
-  type        = bool
-  description = "(Optional) Specifies whether the DB instance is encrypted. The default is false if not specified"
-}
-
 variable "iops" {
   type        = number
   description = "The amount of provisioned IOPS. Setting this implies a storage_type of 'io1'. Default is 0 if rds storage type is not 'io1'"
