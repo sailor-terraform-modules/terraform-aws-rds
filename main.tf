@@ -62,6 +62,21 @@ resource "aws_db_subnet_group" "subnet_group" {
 
 }
 
+resource "aws_secretsmanager_secret" "secret" {
+  name = var.secret_name
+}
+
+resource "aws_secretsmanager_secret_version" "secret_version" {
+  secret_id     = aws_secretsmanager_secret.secret.id
+  secret_string = <<EOF
+   {
+    "hostname": "${aws_db_instance.db_instance.endpoint}"
+    "username": "${local.is_replica ? null : var.database_user}",
+    "password": "${local.is_replica ? null : var.database_password}"
+   }
+EOF
+}
+
 resource "aws_db_instance" "db_instance" {
   db_name               = var.database_name
   username              = local.is_replica ? null : var.database_user
