@@ -282,3 +282,7 @@ variable "timezone" {
   type        = string
   description = "Time zone of the DB instance. timezone is currently only supported by Microsoft SQL Server. The timezone can only be set on creation. See [MSSQL User Guide](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone) for more information."
 }
+variable "secret_name" {
+  type        = string
+  description = "Secret Name"
+}
