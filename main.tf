@@ -63,7 +63,8 @@ resource "aws_db_subnet_group" "subnet_group" {
 }
 
 resource "aws_secretsmanager_secret" "secret" {
-  name = var.secret_name
+  name       = var.secret_name
+  kms_key_id = var.kms_key_arn
 }
 
 resource "aws_secretsmanager_secret_version" "secret_version" {
