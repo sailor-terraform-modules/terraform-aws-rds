@@ -71,8 +71,8 @@ resource "aws_secretsmanager_secret_version" "secret_version" {
   secret_string = <<EOF
    {
     "hostname": "${aws_db_instance.db_instance.endpoint}"
-    "username": "${local.is_replica ? null : var.database_user}",
-    "password": "${local.is_replica ? null : var.database_password}"
+    "username": "${var.database_user}",
+    "password": "${var.database_password}"
    }
 EOF
 }
